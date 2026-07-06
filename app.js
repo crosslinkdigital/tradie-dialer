@@ -105,8 +105,8 @@ async function initializeDevice() {
 
     device = new Twilio.Device(data.token, {
     logLevel: 1,
-    edge: 'usSea',
-    region: 'us-west',
+    edge: 'usEast',
+    region: 'us-east',
     });
 
     device.on('registered', () => {
