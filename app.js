@@ -103,10 +103,12 @@ async function initializeDevice() {
 
     log('Access token received');
 
-    device = new Twilio.Device(data.token, {
+    device = new Twilio.Voice.Device(data.token, {
       logLevel: 1,
       codecPreferences: ['opus', 'pcmu'],
       enableRingingState: true,
+      edge: 'sydney',
+      region: 'au',
     });
 
     device.on('registered', () => {
