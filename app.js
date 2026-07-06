@@ -105,10 +105,8 @@ async function initializeDevice() {
 
     device = new Twilio.Device(data.token, {
     logLevel: 1,
-    edge: 'usEast',
-    region: 'us-east',
     });
-
+    
     device.on('registered', () => {
       log('Device registered successfully');
       updateConnectionStatus(true, 'Ready to call');
