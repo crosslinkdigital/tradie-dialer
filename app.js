@@ -75,6 +75,17 @@ function validatePhoneNumber(phoneNumber) {
 
 async function initializeDevice() {
   try {
+    // Wait for Twilio SDK to load
+    let attempts = 0;
+    while (!window.Twilio && attempts < 50) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      attempts++;
+    }
+
+    if (!window.Twilio) {
+      throw new Error('Twilio SDK failed to load');
+    }
+
     log('Fetching access token...');
     updateConnectionStatus(false, 'Connecting...');
 
