@@ -33,10 +33,12 @@ async function initialiseDialer() {
       throw new Error('Token endpoint did not return a token.');
     }
 
-    device = new Twilio.Device(data.token, {
-      logLevel: 1,
-      codecPreferences: ['opus', 'pcmu']
-    });
+   device = new Twilio.Device(data.token, {
+       logLevel: 'debug',
+      codecPreferences: ['opus', 'pcmu'],
+      enableImprovedSignalingErrorPrecision: true,
+      edge: ['singapore', 'sydney']
+  });
 
     attachDeviceEvents();
 
